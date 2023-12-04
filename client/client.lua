@@ -1,4 +1,4 @@
-local QRCore = exports['qr-core']:GetCoreObject()
+local RSGCore = exports['rsg-core']:GetCoreObject()
 local panning = false
 
 Citizen.CreateThread(function()
@@ -11,7 +11,7 @@ Citizen.CreateThread(function()
 			if #(pos - objectPos) < 3.0 then
 				awayFromObject = false
 				DrawText3Ds(objectPos.x, objectPos.y, objectPos.z + 1.0, "Check for Gold [J]")
-				if IsControlJustReleased(0, QRCore.Shared.Keybinds['J']) then
+				if IsControlJustReleased(0, RSGCore.Shared.Keybinds['J']) then
 					TriggerEvent('rsg-goldrush:client:goldclaim')
 				end
 			end
@@ -24,8 +24,8 @@ end)
 
 -- gold claim / pan for gold
 RegisterNetEvent('rsg-goldrush:client:goldclaim', function()
-	local hasItem1 = QRCore.Functions.HasItem('claimlease', 1)
-	local hasItem2 = QRCore.Functions.HasItem('goldpan', 1)
+	local hasItem1 = RSGCore.Functions.HasItem('claimlease', 1)
+	local hasItem2 = RSGCore.Functions.HasItem('goldpan', 1)
 	if hasItem1 then
 		if hasItem2 and panning == false then
 			panning = true
@@ -43,10 +43,10 @@ RegisterNetEvent('rsg-goldrush:client:goldclaim', function()
 			TriggerServerEvent('rsg-goldrush:server:reward')
 			panning = false
 		else
-			QRCore.Functions.Notify('you don\'t have a gold pan', 'error')
+			RSGCore.Functions.Notify('you don\'t have a gold pan', 'error')
 		end
 	else
-		QRCore.Functions.Notify('you don\'t have the a claim lease', 'error')
+		RSGCore.Functions.Notify('you don\'t have the a claim lease', 'error')
 	end
 end)
 
