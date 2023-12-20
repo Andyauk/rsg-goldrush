@@ -43,10 +43,10 @@ RegisterNetEvent('rsg-goldrush:client:goldclaim', function()
 			TriggerServerEvent('rsg-goldrush:server:reward')
 			panning = false
 		else
-			RSGCore.Functions.Notify('you don\'t have a gold pan', 'error')
+			lib.notify({ title = 'Error', description = 'you don\'t have a gold pan', type = 'error', duration = 5000 })
 		end
 	else
-		RSGCore.Functions.Notify('you don\'t have the a claim lease', 'error')
+		lib.notify({ title = 'Error', description = 'you don\'t have the a claim lease', type = 'error', duration = 5000 })
 	end
 end)
 

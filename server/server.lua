@@ -42,7 +42,7 @@ AddEventHandler('rsg-goldrush:server:reward', function()
 			-- add items
 			Player.Functions.AddItem(item1, Config.SmallRewardAmount)
 			TriggerClientEvent("inventory:client:ItemBox", src, RSGCore.Shared.Items[item1], "add")
-			TriggerClientEvent('RSGCore:Notify', src, 'not much in this pan', 'primary')
+			TriggerClientEvent('ox_lib:notify', src, {title = 'Primary', description = 'not much in this pan', type = 'primary', duration = 5000 })
 		elseif chance >= 50 and chance <= 80 then -- medium reward
 			local item1 = Config.RewardItems[math.random(1, #Config.RewardItems)]
 			local item2 = Config.RewardItems[math.random(1, #Config.RewardItems)]
@@ -51,7 +51,7 @@ AddEventHandler('rsg-goldrush:server:reward', function()
 			TriggerClientEvent("inventory:client:ItemBox", src, RSGCore.Shared.Items[item1], "add")
 			Player.Functions.AddItem(item2, Config.MediumRewardAmount)
 			TriggerClientEvent("inventory:client:ItemBox", src, RSGCore.Shared.Items[item2], "add")
-			TriggerClientEvent('RSGCore:Notify', src, 'looks like good gold', 'primary')
+			TriggerClientEvent('ox_lib:notify', src, {title = 'Primary', description = 'looks like good gold', type = 'primary', duration = 5000 })
 		elseif chance > 80 then -- large reward
 			local item1 = Config.RewardItems[math.random(1, #Config.RewardItems)]
 			local item2 = Config.RewardItems[math.random(1, #Config.RewardItems)]
@@ -63,10 +63,10 @@ AddEventHandler('rsg-goldrush:server:reward', function()
 			TriggerClientEvent("inventory:client:ItemBox", src, RSGCore.Shared.Items[item2], "add")
 			Player.Functions.AddItem(item3, Config.LargeRewardAmount)
 			TriggerClientEvent("inventory:client:ItemBox", src, RSGCore.Shared.Items[item3], "add")
-			TriggerClientEvent('RSGCore:Notify', src, 'gold fever jackpot..', 'primary')
+			TriggerClientEvent('ox_lib:notify', src, {title = 'Primary', description = 'gold fever jackpot..', type = 'primary', duration = 5000 })
 		end
 	else
-		TriggerClientEvent('RSGCore:Notify', src, 'no gold this time..', 'primary')
+		TriggerClientEvent('ox_lib:notify', src, {title = 'Primary', description = 'no gold this time..', type = 'primary', duration = 5000 })
 	end
 end)
 
